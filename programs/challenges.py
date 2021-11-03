@@ -92,8 +92,6 @@ def func_2(string, list):
                     diffs += 1
             if diffs == 1:
                 newlist.append(word)
-            else:
-                continue
     return newlist
 
 # Challenge 3: write a function which:

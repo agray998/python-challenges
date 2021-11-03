@@ -1,4 +1,3 @@
-import pytest
 from programs.challenges import func_1_methods, func_1_no_methods, func_2, func_3, func_4, func_5
 
 def test_func_1_methods():
@@ -11,7 +10,7 @@ def test_func_1_no_methods():
 
 def test_func_2():
     assert func_2("Home", ["hole", "dome", "dove", "hail"]) == ["hole", "dome"]
-    assert func_2("wall", ["Wail", "warm", "tall", "worn"]) == ["Wail", "tall"]
+    assert func_2("wall", ["Wail", "warmer", "tall", "worn"]) == ["Wail", "tall"]
 
 def test_func_3():
     assert func_3(2, 3, [4, 6, 10, 12]) == [False, True, False, True]
