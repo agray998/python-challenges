@@ -40,38 +40,12 @@ def func_1_no_methods(string):
         "Y":"y",
         "Z":"z"
     }
-    lower_case_dict = {
-        "a":"A",
-        "b":"B",
-        "c":"C",
-        "d":"D",
-        "e":"E",
-        "f":"F",
-        "g":"G",
-        "h":"H",
-        "i":"I",
-        "j":"J",
-        "k":"K",
-        "l":"L",
-        "m":"M",
-        "n":"N",
-        "o":"O",
-        "p":"P",
-        "q":"Q",
-        "r":"R",
-        "s":"S",
-        "t":"T",
-        "u":"U",
-        "v":"V",
-        "w":"W",
-        "x":"X",
-        "y":"Y",
-        "z":"Z"
-    }
+    lower_case_dict = {value:key for key, value in upper_case_dict.items()}
     if len(string) % 2 == 0:
-        return ''.join([lower_case_dict.get(char, char) for char in string])
+        lookup_table = lower_case_dict
     else:
-        return ''.join([upper_case_dict.get(char, char) for char in string])
+        lookup_table = upper_case_dict
+    return ''.join(lookup_table.get(char, char) for char in string)
 
 # Challenge 2: write a function which:
 # - takes a word and a list of words as input
@@ -84,12 +58,10 @@ def func_2(string, list):
         if len(word) != len(string):
             continue
         else:
-            diffs = 0
-            for i in range(len(word)):
-                if word.lower()[i] == string.lower()[i]:
-                    continue
-                else:
-                    diffs += 1
+            diffs = sum(c != o for c, o in zip(word.lower(), string.lower()))
+            # for i in range(len(word)):
+            #     if word.lower()[i] != string.lower()[i]:
+            #         diffs += 1
             if diffs == 1:
                 newlist.append(word)
     return newlist
@@ -107,7 +79,7 @@ def func_3(int1, int2, intlist):
 # - the returned string should only contain letter characters. All chars in the returned string should be lower case
 
 def func_4(string):
-    return ''.join([char for char in string.lower() if 97 <= ord(char) <= 122 and ord(char) % 2 == 0])
+    return ''.join(char for char in string.lower() if 97 <= ord(char) <= 122 and ord(char) % 2 == 0)
 
 # Challenge 5: write a function which:
 # - takes a list of integers as argument
